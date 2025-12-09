@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={outfit.className}>{children}</body>
+      <body className={`${outfit.className} bg-pink-lavender text-vampire-black antialiased`}>{children}</body>
     </html>
   );
 }

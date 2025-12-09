@@ -10,6 +10,13 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Custom Color Palette */
+  --color-vampire-black: #0E0204;
+  --color-pink-lavender: #DFBBCA;
+  --color-twilight-lavender: #774972;
+  --color-wine-red: #A30E2B;
+  --color-old-lavender: #7C5D72;
 }
 
 @media (prefers-color-scheme: dark) {

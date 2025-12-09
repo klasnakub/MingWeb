@@ -17,7 +17,7 @@ const getTimeLeft = () => {
 const NumberBox = ({ num, unit }: { num: number; unit: string }) => {
     return (
         <div className="flex flex-col items-center mx-2 sm:mx-4">
-            <div className="relative bg-white/20 backdrop-blur-md rounded-lg overflow-hidden w-16 h-16 sm:w-24 sm:h-24 flex items-center justify-center border border-white/30 shadow-lg">
+            <div className="relative bg-white backdrop-blur-md rounded-lg overflow-hidden w-16 h-16 sm:w-24 sm:h-24 flex items-center justify-center border border-white/60 shadow-lg">
                 <AnimatePresence mode="popLayout">
                     <motion.span
                         key={num}
@@ -25,13 +25,13 @@ const NumberBox = ({ num, unit }: { num: number; unit: string }) => {
                         animate={{ y: "0%", opacity: 1 }}
                         exit={{ y: "-100%", opacity: 0 }}
                         transition={{ duration: 0.4, ease: "backOut" }}
-                        className="absolute text-2xl sm:text-4xl font-bold text-white font-mono"
+                        className="absolute text-2xl sm:text-4xl font-bold text-wine-red font-mono"
                     >
                         {num < 10 ? `0${num}` : num}
                     </motion.span>
                 </AnimatePresence>
             </div>
-            <span className="text-xs sm:text-sm text-white/80 mt-2 font-medium tracking-wider uppercase">
+            <span className="text-xs sm:text-sm text-vampire-black mt-2 font-bold tracking-wider uppercase">
                 {unit}
             </span>
         </div>
@@ -54,15 +54,15 @@ export default function Countdown() {
 
     if (timeLeft.total <= 0) {
         return (
-            <div className="text-center text-white p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20">
-                <h2 className="text-4xl md:text-6xl font-bold mb-4">She's Here!</h2>
+            <div className="text-center text-vampire-black p-8 bg-white/40 backdrop-blur-md rounded-2xl border border-white/50 shadow-xl">
+                <h2 className="text-4xl md:text-6xl font-bold mb-4 text-wine-red">She's Here!</h2>
                 <p className="text-xl">Welcome to the world, Ming!</p>
             </div>
         );
     }
 
     return (
-        <div className="flex flex-wrap justify-center items-center p-4 sm:p-8 bg-black/20 backdrop-blur-sm rounded-2xl border border-white/10 shadow-2xl">
+        <div className="flex flex-wrap justify-center items-center p-4 sm:p-8 bg-white/30 backdrop-blur-md rounded-2xl border border-white/40 shadow-xl">
             <NumberBox num={timeLeft.days} unit="Days" />
             <NumberBox num={timeLeft.hours} unit="Hours" />
             <NumberBox num={timeLeft.minutes} unit="Minutes" />
