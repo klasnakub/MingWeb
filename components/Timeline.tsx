@@ -8,7 +8,12 @@ export default function Timeline() {
         {
             date: "24 May 2025",
             title: "น้องหมิง หนีออกจากเปลือกไข่ พร้อมซนแล้วค่ะ",
-            image: "/images/ming_hatching.jpg",
+            images: ["/images/ming_hatching.jpg"],
+        },
+        {
+            date: "24 May 2025",
+            title: "ย้ายน้องหมิง จากหลอดมาใส่พุง มาม๊า",
+            images: ["/images/ming_transfer_1_v2.jpg", "/images/ming_transfer_2.jpg"],
         },
     ];
 
@@ -51,14 +56,29 @@ export default function Timeline() {
                                 <div className="h-px bg-wine-red/10 flex-1" />
                             </div>
 
-                            {/* Image */}
+                            {/* Images */}
                             <div className="relative aspect-[4/3] w-full bg-pink-lavender/10 rounded-2xl overflow-hidden mb-6 shadow-sm group">
-                                <Image
-                                    src={event.image}
-                                    alt="Ming Hatching"
-                                    fill
-                                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
-                                />
+                                {event.images.length === 1 ? (
+                                    <Image
+                                        src={event.images[0]}
+                                        alt={event.title}
+                                        fill
+                                        className="object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
+                                    />
+                                ) : (
+                                    <div className="grid grid-cols-2 w-full h-full gap-1">
+                                        {event.images.map((img, i) => (
+                                            <div key={i} className="relative w-full h-full overflow-hidden">
+                                                <Image
+                                                    src={img}
+                                                    alt={`${event.title} ${i + 1}`}
+                                                    fill
+                                                    className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
+                                                />
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
                             </div>
 
                             {/* Caption */}
