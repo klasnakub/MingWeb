@@ -63,7 +63,7 @@ export default function Timeline() {
 
                             {/* Caption */}
                             <div className="text-center">
-                                <p className="text-lg md:text-xl font-bold text-vampire-black leading-relaxed">
+                                <p className="text-lg md:text-xl font-bold text-wine-red leading-relaxed font-[family-name:var(--font-prompt)]">
                                     {event.title}
                                 </p>
                             </div>

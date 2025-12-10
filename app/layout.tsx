@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import { Outfit, Prompt } from "next/font/google";
 import "./globals.css";
 
 const outfit = Outfit({ subsets: ["latin"] });
+const prompt = Prompt({
+  subsets: ["thai", "latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-prompt",
+});
 
 export const metadata: Metadata = {
   title: "Ming's Journey",
@@ -16,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${outfit.className} bg-pink-lavender text-vampire-black antialiased`}>{children}</body>
+      <body className={`${outfit.className} ${prompt.variable} bg-pink-lavender text-vampire-black antialiased`}>{children}</body>
     </html>
   );
 }
