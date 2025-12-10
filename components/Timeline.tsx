@@ -30,6 +30,12 @@ export default function Timeline() {
             title: "อัลตราซาวด์ครั้งแรก! เห็นเม็ดถั่วเขียวน้อยๆ กำลังค่อยๆ เติบโต🌱",
             images: ["/images/ming_ultrasound_1.jpg"],
         },
+        {
+            date: "3 July 2025",
+            title: "คุณหมออธิบายให้ฟัง น้องหมิงก็โบกมือ Say Hi ทักทาย 👋\nได้ยินเสียงหัวใจลูกเต้นครั้งแรก ปาป๊าตื่นเต้นสุดๆ เลยค่ะ 💓",
+            images: [],
+            video: "/videos/Ming_ultrasound_optimized.mp4",
+        },
     ];
 
     return (
@@ -71,34 +77,45 @@ export default function Timeline() {
                                 <div className="h-px bg-wine-red/10 flex-1" />
                             </div>
 
-                            {/* Images */}
+                            {/* Media (Images or Video) */}
                             <div className="relative aspect-[4/3] w-full bg-pink-lavender/10 rounded-2xl overflow-hidden mb-6 shadow-sm group">
-                                {event.images.length === 1 ? (
-                                    <Image
-                                        src={event.images[0]}
-                                        alt={event.title}
-                                        fill
-                                        className="object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
-                                    />
+                                {(event as any).video ? (
+                                    <video
+                                        controls
+                                        className="w-full h-full object-cover"
+                                        playsInline
+                                    >
+                                        <source src={(event as any).video} type="video/mp4" />
+                                        Your browser does not support the video tag.
+                                    </video>
                                 ) : (
-                                    <div className="grid grid-cols-2 w-full h-full gap-1">
-                                        {event.images.map((img, i) => (
-                                            <div key={i} className="relative w-full h-full overflow-hidden">
-                                                <Image
-                                                    src={img}
-                                                    alt={`${event.title} ${i + 1}`}
-                                                    fill
-                                                    className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
-                                                />
-                                            </div>
-                                        ))}
-                                    </div>
+                                    event.images.length === 1 ? (
+                                        <Image
+                                            src={event.images[0]}
+                                            alt={event.title}
+                                            fill
+                                            className="object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
+                                        />
+                                    ) : (
+                                        <div className="grid grid-cols-2 w-full h-full gap-1">
+                                            {event.images.map((img, i) => (
+                                                <div key={i} className="relative w-full h-full overflow-hidden">
+                                                    <Image
+                                                        src={img}
+                                                        alt={`${event.title} ${i + 1}`}
+                                                        fill
+                                                        className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
+                                                    />
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )
                                 )}
                             </div>
 
                             {/* Caption */}
                             <div className="text-center">
-                                <p className="text-lg md:text-xl font-bold text-wine-red leading-relaxed font-[family-name:var(--font-prompt)]">
+                                <p className="text-lg md:text-xl font-bold text-wine-red leading-relaxed font-[family-name:var(--font-prompt)] whitespace-pre-line">
                                     {event.title}
                                 </p>
                             </div>
