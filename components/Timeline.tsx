@@ -19,7 +19,7 @@ export default function Timeline() {
                 <div className="absolute -left-[4px] top-[-24px] bottom-0 w-[4px] bg-wine-red/30 rounded-t-sm" />
 
                 {/* Start Label */}
-                <div className="absolute -top-[58px] -left-[2px] transform -translate-x-1/2 flex flex-col items-center z-20">
+                <div className="absolute -top-[58px] -left-[2px] transform -translate-x-2 md:-translate-x-1/2 flex flex-col items-center z-20">
                     <span className="bg-wine-red text-pink-lavender text-xs font-bold px-4 py-2 rounded-xl shadow-lg border border-pink-lavender/20 tracking-wider uppercase mb-0">
                         Start Journey
                     </span>
