@@ -14,21 +14,23 @@ const images = [
 ];
 
 export default function GalleryPage() {
-    const [shuffledImages, setShuffledImages] = useState<string[]>([]);
+    const [galleryItems, setGalleryItems] = useState<{ src: string; rotation: number }[]>([]);
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        // Fisher-Yates shuffle
-        const shuffle = (array: string[]) => {
-            const newArray = [...array];
-            for (let i = newArray.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
-            }
-            return newArray;
-        };
+        // Create items with random rotation first, then shuffle
+        const items = images.map((src) => ({
+            src,
+            rotation: Math.random() * 12 - 6, // -6 to 6 degrees
+        }));
 
-        setShuffledImages(shuffle(images));
+        // Fisher-Yates shuffle
+        for (let i = items.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [items[i], items[j]] = [items[j], items[i]];
+        }
+
+        setGalleryItems(items);
         setMounted(true);
     }, []);
 
@@ -47,15 +49,10 @@ export default function GalleryPage() {
                 </div>
 
                 <div className="flex flex-wrap justify-center gap-12 p-8">
-                    {shuffledImages.map((src, index) => {
-                        // Random rotation between -6 and 6 degrees
-                        const rotation = Math.random() * 12 - 6;
-                        // Random scale slightly
-                        const scale = 0.9 + Math.random() * 0.1;
-
+                    {galleryItems.map((item, index) => {
                         return (
                             <motion.div
-                                key={`${src}-${index}`}
+                                key={`${item.src}-${index}`}
                                 initial={{ opacity: 0, scale: 0.8, y: 50 }}
                                 animate={{ opacity: 1, scale: 1, y: 0 }}
                                 transition={{
@@ -72,7 +69,7 @@ export default function GalleryPage() {
                                 }}
                                 className="relative bg-white p-4 pb-12 shadow-xl cursor-pointer group"
                                 style={{
-                                    transform: `rotate(${rotation}deg)`,
+                                    rotate: item.rotation, // Use Framer Motion style prop for rotation
                                 }}
                             >
                                 {/* Pin effect (optional) */}
@@ -80,7 +77,7 @@ export default function GalleryPage() {
 
                                 <div className="relative w-64 h-64 md:w-72 md:h-72 overflow-hidden bg-gray-100">
                                     <Image
-                                        src={src}
+                                        src={item.src}
                                         alt="Ming's Memory"
                                         fill
                                         className="object-cover sepia-[.15] contrast-[1.05] group-hover:sepia-0 transition-all duration-300"
