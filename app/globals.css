@@ -17,6 +17,7 @@
   --color-twilight-lavender: #774972;
   --color-wine-red: #A30E2B;
   --color-old-lavender: #7C5D72;
+  --font-handwriting: var(--font-dancing-script);
 }
 
 @media (prefers-color-scheme: dark) {

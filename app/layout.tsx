@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
-import { Outfit, Prompt } from "next/font/google";
+import { Outfit, Prompt, Dancing_Script } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
 
 const outfit = Outfit({ subsets: ["latin"] });
 const prompt = Prompt({
   subsets: ["thai", "latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-prompt",
+});
+const dancingScript = Dancing_Script({
+  subsets: ["latin"],
+  variable: "--font-dancing-script",
 });
 
 export const metadata: Metadata = {
@@ -21,7 +26,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${outfit.className} ${prompt.variable} bg-pink-lavender text-vampire-black antialiased`}>{children}</body>
+      <body className={`${outfit.className} ${prompt.variable} ${dancingScript.variable} bg-pink-lavender text-vampire-black antialiased`}>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
