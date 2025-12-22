@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const TARGET_DATE = new Date("2026-02-07T00:00:00");
+const TARGET_DATE = new Date("2026-01-29T00:00:00");
 
 const getTimeLeft = () => {
     const total = Date.parse(TARGET_DATE.toString()) - Date.parse(new Date().toString());

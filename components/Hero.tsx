@@ -24,7 +24,7 @@ export default function Hero() {
                 </div>
 
                 <div className="mt-12 text-old-lavender text-sm md:text-base font-light tracking-widest">
-                    FEB 7, 2026 • THE JOURNEY STARTS
+                    JAN 29, 2026 • THE JOURNEY STARTS
                 </div>
             </div>
 
